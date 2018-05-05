@@ -4,7 +4,7 @@
 
 
 int main(int argc, char *argv[]) {
-    if( argc == 2 ) {
+    if (argc == 2) {
         char* bp_name = argv[1];
         std::cout << "Using Blueprint: " << bp_name << std::endl << std::endl;
 
@@ -18,8 +18,6 @@ int main(int argc, char *argv[]) {
 
         std::cout << std::endl << "Robocar is starting up" << std::endl;
 
-    }
-
-    else if( argc > 2 ) { printf("Too many arguments supplied.\n"); }
+    } else if( argc > 2 ) { printf("Too many arguments supplied.\n"); }
     else { printf("One argument expected.\n"); }
 }
