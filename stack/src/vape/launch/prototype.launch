@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="vape" type="camera" name="camera"/>
+    <node pkg="vape" type="lidar" name="lidar"/>
+    <node pkg="vape" type="base_ld" name="base_ld"/>
+    <node pkg="vape" type="base_mp" name="base_mp"/>
+    <node pkg="vape" type="base_controller" name="base_controller"/>
+</launch>

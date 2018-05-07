@@ -1,0 +1,9 @@
+# CMake generated Testfile for 
+# Source directory: /home/Robocar/stack/src
+# Build directory: /home/Robocar/stack/build
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+subdirs(gtest)
+subdirs(vape_msgs)
+subdirs(vape)

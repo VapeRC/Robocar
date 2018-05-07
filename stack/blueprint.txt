@@ -1,4 +1,0 @@
-sensors/rplidar
-cv/lane_detector
-mp/lane_keeper
-mp/controller
