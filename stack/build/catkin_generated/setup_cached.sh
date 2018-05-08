@@ -8,4 +8,3 @@
 
 # modified environment variables
 export PWD="/home/Robocar/stack/build"
-export PYTHONPATH="/home/Robocar/stack/devel/lib/python2.7/dist-packages:$PYTHONPATH"

@@ -1,2 +1,2 @@
-vape:vape_msgs
+vape
 -DCATKIN_DEVEL_PREFIX=/home/Robocar/stack/devel -DCMAKE_INSTALL_PREFIX=/home/Robocar/stack/install -G Unix Makefiles

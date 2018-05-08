@@ -152,7 +152,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(vape_EXPORTED_TARGETS "")
+set(vape_EXPORTED_TARGETS "vape_generate_messages_cpp;vape_generate_messages_eus;vape_generate_messages_lisp;vape_generate_messages_nodejs;vape_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${vape_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -160,7 +160,7 @@ foreach(t ${vape_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "message_runtime")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

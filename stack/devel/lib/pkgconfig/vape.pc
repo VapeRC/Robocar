@@ -3,6 +3,6 @@ prefix=/home/Robocar/stack/devel
 Name: vape
 Description: Description of vape
 Version: 0.0.0
-Cflags: -I/home/Robocar/stack/src/vape/sensors -I/home/Robocar/stack/src/vape/cv -I/home/Robocar/stack/src/vape/mp -I/home/Robocar/stack/src/vape/launch
+Cflags: -I/home/Robocar/stack/devel/include -I/home/Robocar/stack/src/vape/sensors -I/home/Robocar/stack/src/vape/cv -I/home/Robocar/stack/src/vape/mp -I/home/Robocar/stack/src/vape/launch
 Libs: -L/home/Robocar/stack/devel/lib 
-Requires: 
+Requires: message_runtime

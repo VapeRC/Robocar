@@ -117,7 +117,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/Robocar/stack/build/gtest/cmake_install.cmake")
-  include("/home/Robocar/stack/build/vape_msgs/cmake_install.cmake")
   include("/home/Robocar/stack/build/vape/cmake_install.cmake")
 
 endif()

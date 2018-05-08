@@ -1,0 +1,6 @@
+# Build files
+**/build
+**/devel
+
+# IDE files
+**/.idea
