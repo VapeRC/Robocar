@@ -7,6 +7,7 @@ Header header        # Header timestamp should be acquisition time of image
                      # origin of frame should be optical center of cameara
                      # +x should point to the right in the image
                      # +y should point down in the image
+                     # +z should point into the image plane
 
 uint32 height         # image height, that is, number of rows
 uint32 width          # image width, that is, number of columns

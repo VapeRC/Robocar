@@ -4,6 +4,7 @@
 
 int main(int argc, char** argv) {
     ros::init(argc, argv, "camera"); // Initialize the ROS System, Declare Node
+
     ros::NodeHandle nh; // Establish this program as a ROS node
 
     ROS_INFO_STREAM("Camera Node is starting up...");     // Log startup
