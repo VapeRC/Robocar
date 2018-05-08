@@ -1,8 +1,0 @@
-prefix=/home/Robocar/stack/devel
-
-Name: vape_msgs
-Description: Description of vape_msgs
-Version: 0.0.0
-Cflags: -I/home/Robocar/stack/devel/include
-Libs: -L/home/Robocar/stack/devel/lib 
-Requires: message_runtime
