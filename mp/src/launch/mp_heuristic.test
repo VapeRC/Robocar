@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="mp" type="mp_heuristic" name="mp_heuristic" />
+  <test pkg="mp" type="test_mp_heuristic" test-name="test_mp_heuristic" />
+</launch>

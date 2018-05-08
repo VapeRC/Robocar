@@ -1,0 +1,3 @@
+Header header
+float32 steeringNormalized
+float32 accelerationNormalized
