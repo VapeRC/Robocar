@@ -4,12 +4,12 @@
 #include <vape/Lane.h> // TODO: Add message type Lanes.h
 
 
-ros::Publisher pub;
+ros::Publisher *pub = nullptr;
 
 void imageReceived(const vape::Image& img) {
     // TODO: Use img to infer Lanes
     // TODO: vape_msgs::Lanes msg = ...;
-    // TODO: pub.publish(msg);
+    // TODO: pub->publish(msg);
 }
 
 int main(int argc, char** argv) {
@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     ROS_INFO_STREAM("Base-LD Node is starting up...");     // Log startup
 
     // Setup publisher with <Message_Type>, "ROS-TOPIC" and queue = 1000
-    pub = nh.advertise<vape::Lane>("/robocar/lanes/", 1000);
+    pub = &nh.advertise<vape::Lane>("/robocar/lanes/", 1000);
 
     // Create subscriber of "ROS-Topic", callback imageReceived and queue = 1000
     ros::Subscriber sub = nh.subscribe("/robocar/images/", 1000, &imageReceived);
