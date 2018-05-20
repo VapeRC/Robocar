@@ -1,7 +1,8 @@
-#include "base_controller.h"
+/** Implementation of controls_base.h **/
 #include <ros/ros.h>
 #include <vape/Path.h>  // TODO: Add message type Path.h
 
+#include "controls_base.h"
 
 void pathReceived(const vape::Path& pth) {
     // TODO: Use path to calculate steering, velocity
@@ -10,7 +11,7 @@ void pathReceived(const vape::Path& pth) {
 }
 
 int main(int argc, char** argv) {
-    ros::init(argc, argv, "base_mp"); // Initialize the ROS System, Declare Node
+    ros::init(argc, argv, "controls_base"); // Initialize the ROS System, Declare Node
     ros::NodeHandle nh; // Establish this program as a ROS node
 
     ROS_INFO_STREAM("Base-Controller Node is starting up..."); // Log startup

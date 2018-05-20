@@ -54,6 +54,8 @@ add_message_files(
   Sweep.msg
   Lane.msg
   Path.msg
+  Controls.msg
+  MPH_Input.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -132,18 +134,20 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(camera sensors/camera.cc sensors/camera.h)
 add_executable(lidar sensors/lidar.cc sensors/lidar.h)
-add_executable(base_ld cv/base_ld.cc cv/base_ld.h)
-add_executable(base_mp mp/base_mp.cc mp/base_mp.h)
-add_executable(base_controller mp/base_controller.cc mp/base_controller.h)
+add_executable(ld_base cv/ld_base.cc cv/ld_base.h)
+add_executable(mp_base mp/mp_base.cc mp/mp_base.h)
+add_executable(mp_heuristic mp/mp_heuristic.cc mp/mp_heuristic.h)
+add_executable(controls_base mp/controls_base.cc mp/controls_base.h)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 add_dependencies(camera ${catkin_EXPORTED_TARGETS})
 add_dependencies(lidar ${catkin_EXPORTED_TARGETS})
-add_dependencies(base_ld ${catkin_EXPORTED_TARGETS})
-add_dependencies(base_mp ${catkin_EXPORTED_TARGETS})
-add_dependencies(base_controller ${catkin_EXPORTED_TARGETS})
+add_dependencies(ld_base ${catkin_EXPORTED_TARGETS})
+add_dependencies(mp_base ${catkin_EXPORTED_TARGETS})
+add_dependencies(mp_heuristic ${catkin_EXPORTED_TARGETS})
+add_dependencies(controls_base ${catkin_EXPORTED_TARGETS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -158,9 +162,10 @@ add_dependencies(base_controller ${catkin_EXPORTED_TARGETS})
 ## Specify libraries to link a library or executable target against
 target_link_libraries(camera ${catkin_LIBRARIES})
 target_link_libraries(lidar ${catkin_LIBRARIES})
-target_link_libraries(base_ld ${catkin_LIBRARIES})
-target_link_libraries(base_mp ${catkin_LIBRARIES})
-target_link_libraries(base_controller ${catkin_LIBRARIES})
+target_link_libraries(ld_base ${catkin_LIBRARIES})
+target_link_libraries(mp_base ${catkin_LIBRARIES})
+target_link_libraries(mp_heuristic ${catkin_LIBRARIES})
+target_link_libraries(controls_base ${catkin_LIBRARIES})
 
 #############
 ## Install ##
