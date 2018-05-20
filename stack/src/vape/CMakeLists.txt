@@ -108,7 +108,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS sensors cv mp launch
+  INCLUDE_DIRS sensors cv mp msg hw adapters launch
 #  LIBRARIES vape
   CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
@@ -132,12 +132,26 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/vape_node.cpp)
 
-add_executable(camera sensors/camera.cc sensors/camera.h)
-add_executable(lidar sensors/lidar.cc sensors/lidar.h)
-add_executable(ld_base cv/ld_base.cc cv/ld_base.h)
-add_executable(mp_base mp/mp_base.cc mp/mp_base.h)
-add_executable(mp_heuristic mp/mp_heuristic.cc mp/mp_heuristic.h)
-add_executable(controls_base mp/controls_base.cc mp/controls_base.h)
+add_executable(camera sensors/camera.cc sensors/camera.h
+                msg/Image.msg)
+
+add_executable(lidar sensors/lidar.cc sensors/lidar.h
+                msg/Sweep.msg)
+
+add_executable(ld_base cv/ld_base.cc cv/ld_base.h
+                msg/Image.msg msg/Lane.msg)
+
+add_executable(mp_base mp/mp_base.cc mp/mp_base.h
+                msg/Lane.msg msg/Path.msg)
+
+add_executable(mp_heuristic mp/mp_heuristic.cc mp/mp_heuristic.h adapter/mph_adapter
+                msg/Lane.msg msg/MPH_Input msg/Controls.msg)
+
+add_executable(controls_PID mp/controls_PID.cc mp/controls_PID.h
+                msg/Path.msg msg/Controls.msg)
+
+add_executable(hw_comm hw/hw_communication.cc hw/hw_communication.h
+                msg/Controls.msg)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -147,7 +161,8 @@ add_dependencies(lidar ${catkin_EXPORTED_TARGETS})
 add_dependencies(ld_base ${catkin_EXPORTED_TARGETS})
 add_dependencies(mp_base ${catkin_EXPORTED_TARGETS})
 add_dependencies(mp_heuristic ${catkin_EXPORTED_TARGETS})
-add_dependencies(controls_base ${catkin_EXPORTED_TARGETS})
+add_dependencies(controls_PID ${catkin_EXPORTED_TARGETS})
+add_dependencies(hw_comm ${catkin_EXPORTED_TARGETS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -165,7 +180,8 @@ target_link_libraries(lidar ${catkin_LIBRARIES})
 target_link_libraries(ld_base ${catkin_LIBRARIES})
 target_link_libraries(mp_base ${catkin_LIBRARIES})
 target_link_libraries(mp_heuristic ${catkin_LIBRARIES})
-target_link_libraries(controls_base ${catkin_LIBRARIES})
+target_link_libraries(controls_PID ${catkin_LIBRARIES})
+target_link_libraries(hw_comm ${catkin_LIBRARIES})
 
 #############
 ## Install ##

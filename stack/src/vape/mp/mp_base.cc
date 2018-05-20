@@ -1,13 +1,13 @@
 /** Implementation of mp_base.h **/
 #include <ros/ros.h>
-#include <vape/Lane.h> // TODO: Add message type Lanes.h
-#include <vape/Path.h>  // TODO: Add message type Path.h
+#include <vape/Lane.h>
+#include <vape/Path.h>
 
 #include "base_mp.h"
 
 ros::Publisher *pub = nullptr;
 
-void laneReceived(const vape::Lane& lns) {
+void process(const vape::Lane& lns) {
     // TODO: Use lns to calculate output Path
     // TODO: vape_msgs::Path msg = ...;
     // TODO: pub->publish(msg);
@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
     pub = &nh.advertise<vape::Path>("/robocar/paths/", 1000);
 
     // Create subscriber of "ROS-Topic", callback lanesReceived and queuesize 1000
-    ros::Subscriber sub = nh.subscribe("/robocar/lanes/", 1000, &laneReceived);
+    ros::Subscriber sub = nh.subscribe("/robocar/lanes/", 1000, &process);
 
     // Start cycle of listening for messages, then responding
     ros::spin();

@@ -8,10 +8,6 @@
 
 #ifndef _mp_bct_h
 #define _mp_bct_h
-#include <vape/Path.h>
-
-
-void pathReceived(const vape::Path&);
 
 int main(int, char**);
 

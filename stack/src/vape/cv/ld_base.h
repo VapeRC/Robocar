@@ -9,10 +9,6 @@
 
 #ifndef _cv_bld_h
 #define _cv_bld_h
-#include <vape/Image.h>
-
-
-void imageReceived(const vape::Image&);
 
 int main(int, char**);
 

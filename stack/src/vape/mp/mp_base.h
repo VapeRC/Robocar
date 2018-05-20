@@ -8,9 +8,6 @@
 
 #ifndef _mp_bmp_h
 #define _mp_bmp_h
-#include <vape/Lane.h>
-
-void laneReceived(const vape::Lane&);
 
 int main(int, char**);
 

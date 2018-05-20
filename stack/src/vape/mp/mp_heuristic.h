@@ -13,9 +13,6 @@
 #ifndef MP_MP_HEURISTIC_H
 #define MP_MP_HEURISTIC_H
 
-#include <vape/MPH_Input.h>
-#include <vape/Controls.h>
-
-vape::Controls drive(const vape::MPH_Input& input);
+int main(int, char**); 
 
 #endif //MP_MP_HEURISTIC_H

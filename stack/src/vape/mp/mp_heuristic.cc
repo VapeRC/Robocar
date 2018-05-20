@@ -5,13 +5,15 @@
 #include <math.h>
 
 #include "mp_heuristic.h"
+#include "../adpaters/mph_adapter.h"
 
 const float TARGET_SPEED_MS = 5.5;
 const float MIN_SPEED_MS = 1.0;
 
 float lastAcceleration = .0;
 
-ros::Publisher *pub;
+ros::Publisher *pub = nullptr;
+mph_adapter::Adapter *ad = nullptr;
 
 float bound(float val, float minVal, float maxVal) {
     if (val < minVal) return minVal;
@@ -19,7 +21,10 @@ float bound(float val, float minVal, float maxVal) {
     return val;
 }
 
-void inputReceived(const vape::MPH_Input& input) {
+void process(const vape::Lane& lane) {
+    // Convert to expeted .msg Type
+    vape::MPH_Input mph_in = ad->convert(lane);
+
     float angle = input.angleRAD;
     float dist = input.distNormalized;
     float vel = input.velocityMS;
@@ -47,6 +52,8 @@ void inputReceived(const vape::MPH_Input& input) {
     controls.steering = steering;
     controls.acceleration = acceleration;
 
+    return controls;
+
     pub->publish(controls);
 }
 
@@ -58,9 +65,10 @@ int main(int argc, char **argv) {
 
     // Setup publisher with <Message_Type>, "ROS-TOPIC" and queue = 1000
     pub = &nh.advertise<vape::Controls>("/robocar/controls/", 1000);
+    ad = &mph_adapter::Adapter; // Initialize Adapter
 
     // Create subscriber of "ROS-Topic", callback inputReceived and queuesize 1000
-    ros::Subscriber sub = nh.subscribe("/robocar/lanes/", 1000, &inputReceived);
+    ros::Subscriber sub = nh.subscribe("/robocar/lanes/", 1000, &process);
 
     // Start cycle of listening for messages, then responding
     ros::spin();
